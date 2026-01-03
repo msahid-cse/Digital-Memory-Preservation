@@ -90,15 +90,57 @@
 
 /* Form */
 .upload-form {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--spacing-xl);
+    align-items: start;
+}
+
+@media (max-width: 900px) {
+    .upload-form {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-column {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-xl);
+}
+
+.form-section {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    box-shadow: var(--shadow-sm);
+    transition: all var(--transition-base);
+}
+
+.form-section:hover {
+    border-color: rgba(139, 92, 246, 0.3);
+    box-shadow: var(--shadow-md);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .form-group {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.form-group:last-child {
+    margin-bottom: 0;
 }
 
 .form-label {

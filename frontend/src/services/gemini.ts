@@ -1,6 +1,6 @@
 import { GEMINI_API_KEY } from '../config/gemini';
 
-const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent';
+const GEMINI_API_URL = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent';
 
 interface GeminiResponse {
     candidates: Array<{
@@ -9,7 +9,11 @@ interface GeminiResponse {
                 text: string;
             }>;
         };
+        finishReason?: string;
     }>;
+    error?: {
+        message: string;
+    };
 }
 
 interface MemoryInsight {
@@ -62,14 +66,22 @@ Respond ONLY with valid JSON, no additional text.
             });
 
             if (!response.ok) {
-                throw new Error(`Gemini API error: ${response.statusText}`);
+                const errorData = await response.json();
+                console.error('Gemini API Error Detail:', errorData);
+                throw new Error(`Gemini API error: ${errorData.error?.message || response.statusText}`);
             }
 
             const data: GeminiResponse = await response.json();
+
+            if (!data.candidates || data.candidates.length === 0) {
+                console.error('No candidates in response:', data);
+                throw new Error('No analysis generated (Safety or other policy)');
+            }
+
             const text = data.candidates[0]?.content?.parts[0]?.text;
 
             if (!text) {
-                throw new Error('No response from Gemini API');
+                throw new Error('No text in response candidate');
             }
 
             // Extract JSON from response (remove markdown code blocks if present)
