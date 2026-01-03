@@ -1,0 +1,327 @@
+.visualization {
+    min-height: 100vh;
+    padding: 8rem 0 4rem;
+}
+
+.viz-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.viz-title {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    margin-bottom: var(--spacing-sm);
+}
+
+.viz-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+}
+
+/* View Selector */
+.view-selector {
+    display: flex;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+    justify-content: center;
+}
+
+.view-button {
+    flex: 1;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-lg);
+    background: transparent;
+    border: 2px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    color: var(--color-text-secondary);
+    font-weight: 600;
+}
+
+.view-button:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+}
+
+.view-button.active {
+    background: var(--gradient-primary);
+    border-color: var(--color-primary);
+    color: white;
+}
+
+.view-icon {
+    font-size: 2.5rem;
+}
+
+/* Common View Styles */
+.timeline-view,
+.graph-view,
+.emotions-view {
+    padding: var(--spacing-2xl);
+}
+
+.view-title {
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    text-align: center;
+}
+
+.view-description {
+    text-align: center;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-2xl);
+}
+
+/* Timeline */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.timeline-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    position: relative;
+}
+
+.timeline-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.marker-dot {
+    width: 20px;
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px var(--glass-bg), 0 0 0 8px var(--glass-border);
+    z-index: 2;
+}
+
+.marker-line {
+    width: 2px;
+    flex: 1;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    margin-top: 4px;
+}
+
+.timeline-item:last-child .marker-line {
+    display: none;
+}
+
+.timeline-content {
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+}
+
+.timeline-content:hover {
+    transform: translateX(8px);
+}
+
+.timeline-year {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-xs);
+}
+
+.timeline-event {
+    font-size: 1.25rem;
+    margin-bottom: var(--spacing-sm);
+}
+
+.timeline-meta {
+    display: flex;
+    gap: var(--spacing-sm);
+    align-items: center;
+}
+
+.timeline-category {
+    font-size: 0.75rem;
+}
+
+.timeline-emotion {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* Knowledge Graph */
+.graph-container {
+    position: relative;
+}
+
+.knowledge-graph {
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+}
+
+.node {
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.node:hover circle {
+    filter: brightness(1.2);
+    transform: scale(1.1);
+}
+
+.node circle {
+    transition: all var(--transition-base);
+}
+
+.node text {
+    pointer-events: none;
+}
+
+.graph-legend {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.legend-color {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-sm);
+}
+
+/* Emotional Journey */
+.emotions-chart {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--spacing-xl);
+}
+
+.emotion-period {
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+}
+
+.emotion-period:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+}
+
+.period-name {
+    font-size: 1.5rem;
+    text-align: center;
+    margin-bottom: var(--spacing-lg);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.emotion-bars {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.emotion-bar-item {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.emotion-label {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+}
+
+.emotion-icon {
+    font-size: 1.25rem;
+}
+
+.emotion-bar-bg {
+    width: 100%;
+    height: 32px;
+    background: var(--glass-bg);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.emotion-bar-fill {
+    height: 100%;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: var(--spacing-sm);
+    transition: width 1s ease-out;
+    position: relative;
+}
+
+.emotion-bar-fill.joy {
+    background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.emotion-bar-fill.sadness {
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+}
+
+.emotion-bar-fill.anxiety {
+    background: linear-gradient(90deg, #fa709a 0%, #fee140 100%);
+}
+
+.emotion-bar-fill.peace {
+    background: linear-gradient(90deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.bar-value {
+    color: white;
+    font-weight: 700;
+    font-size: 0.75rem;
+}
+
+@media (max-width: 768px) {
+    .view-selector {
+        flex-direction: column;
+    }
+
+    .view-button {
+        max-width: 100%;
+    }
+
+    .timeline-item {
+        grid-template-columns: 60px 1fr;
+    }
+
+    .emotions-chart {
+        grid-template-columns: 1fr;
+    }
+}

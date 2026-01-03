@@ -1,0 +1,40 @@
+# Digital Memory Preservation - Backend Requirements
+
+# Core Framework
+Django==5.0.1
+djangorestframework==3.14.0
+django-cors-headers==4.3.1
+psycopg2-binary==2.9.9
+
+# AI & NLP
+transformers==4.36.2
+torch==2.1.2
+sentence-transformers==2.3.1
+openai-whisper==20231117
+spacy==3.7.2
+
+# Database & Storage
+neo4j==5.16.0
+faiss-cpu==1.7.4
+redis==5.0.1
+
+# Authentication & Security
+djangorestframework-simplejwt==5.3.1
+cryptography==41.0.7
+
+# File Processing
+Pillow==10.2.0
+python-magic==0.4.27
+moviepy==1.0.3
+
+# Utilities
+python-dotenv==1.0.0
+celery==5.3.4
+gunicorn==21.2.0
+whitenoise==6.6.0
+
+# Development
+pytest==7.4.4
+pytest-django==4.7.0
+black==23.12.1
+flake8==7.0.0
